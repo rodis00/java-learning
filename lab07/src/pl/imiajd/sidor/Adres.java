@@ -1,5 +1,7 @@
 package pl.imiajd.sidor;
 
+import java.util.ArrayList;
+
 public class Adres {
 
     private String ulica;
@@ -29,9 +31,23 @@ public class Adres {
         System.out.println();
     }
 
-    public boolean przed(Adres adres1){
-        if(this.kod_pocztowy.equals(adres1.kod_pocztowy))
-            return true;
-    return false;
+    public boolean przed(Adres adres2){
+        String adres_1 = kod_pocztowy;
+        String adres_2 = adres2.kod_pocztowy;
+
+        int [] indexes = {0, 1, 3, 4, 5};
+
+        String first = "";
+        String second = "";
+
+        for(int idx : indexes){
+            first += adres_1.charAt(idx);
+            second += adres_2.charAt(idx);
+        }
+
+        int first_int = Integer.parseInt(first);
+        int second_int = Integer.parseInt(second);
+
+        return first_int < second_int;
     }
 }
